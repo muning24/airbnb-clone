@@ -1,33 +1,309 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* Navbar styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  height: 60px;
+}
+
+.buttons button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #ff5a5f;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buttons button.login {
+  background-color: transparent;
+  border: 1px solid #ff5a5f;
+  color: #ff5a5f;
+}
+
+.buttons button:hover {
+  opacity: 0.8;
+}
+
+/* Footer styles */
+footer {
+  background-color: #f7f7f7;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #999;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+}
+
+.footer-content p:not(:first-child) {
+  margin-left: 20px;
+}
+
+/* Listings styles */
+.listings-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.listing {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-decoration: none; /* Remove underline */
+}
+
+.listing img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+
+}
+
+.listing-details {
+  padding: 10px;
+}
+
+.listing-title {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: black; /* Set the text color to black */
+}
+
+.listing-location,
+.listing-price {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: gray; /* Set the text color to gray */
+}
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+  .listings-container {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@media screen and (max-width: 480px) {
+  .listings-container {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.property-image {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 80%; /* Limits the width to 80% of the screen width */
+}
+
+.property-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.content-container {
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.text-container {
+  width: 70%;
+  display: inline-block;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.text-container h2 {
+  margin-bottom: 10px;
+  color: rgb(50, 48, 48);
+}
+
+.separator {
+  border: 0.5px solid #ccc;
+  margin: 10px 0;
+}
+
+.frame-container {
+  width: 30%;
+  display: inline-block;
+  padding: 20px;
+  margin-bottom: 50px;
+  box-sizing: border-box;
+  position: sticky;
+  top: 50px; 
+  height: calc(100vh - 100px);
+}
+
+/* Reservation Form styles */
+.reservation-form {
+  width: 100%;
+  height: 500px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-form .form {
+  display: flex;
+  flex-direction: column;
+}
+
+.reservation-form label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.reservation-form input[type="date"],
+.reservation-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.reservation-form button {
+  background-color: #ff5a5f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.reservation-form button:hover {
+  background-color: #d9534f;
+}
+
+
+.request-to-book {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  color: #484848;
+}
+
+.request-to-book h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 30px 0 20px;
+}
+
+.request-to-book .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  margin: 0;
+}
+
+.request-to-book .row p {
+  margin: 0;
+}
+
+.request-to-book .left {
+  flex-grow: 1;
+}
+
+.request-to-book .right {
+  flex-basis: 100px;
+  text-align: right;
+}
+  
+.request-to-book hr {
+  margin: 30px 0;
+  border: 0;
+  border-top: 1px solid #e6e6e6;
+}
+
+.request-to-book h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 30px 0 20px;
+}
+
+.request-to-book label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+
+}
+
+.request-to-book input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.request-to-book textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  font-size: 16px;
+  height: 120px;
+  resize: none;
+  margin-bottom: 20px;
+}
+
+.request-to-book button {
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+  
+.request-to-book button:hover {
+  background-color: #e6555a;
+}
+
+.confirmation-message {
+  background-color: rgba(0, 0, 0, 0.1); /* Transparent grey background */
+  color: #555; /* Grey font color */
+  border: 1px solid #ccc; /* Grey border */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners */
+  text-align: center;
+  font-size: 16px;
+  max-width: 500px;
+  margin: 80px auto; /* Margin top and bottom */
 }
